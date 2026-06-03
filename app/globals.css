@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --surface-secondary: #f2f2f7;
+  --separator: rgba(60, 60, 67, 0.12);
+  --text: #1d1d1f;
+  --text-secondary: #86868b;
+  --muted: #aeaeb2;
+  --brand: #0071e3;
+  --brand-pressed: #0066cc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1;
+}
+
+::selection {
+  background: rgba(0, 113, 227, 0.2);
+  color: var(--text);
+}
+
+@layer components {
+  .bg-mesh {
+    background-color: var(--bg);
+  }
+
+  .text-gradient-gold,
+  .text-accent {
+    color: var(--brand);
+  }
+
+  .section-label {
+    @apply font-body text-[13px] font-normal text-text-secondary;
+  }
+
+  .section-title {
+    @apply font-heading text-[22px] font-semibold tracking-tight text-text;
+  }
+
+  .card {
+    @apply rounded-apple-lg border border-border bg-surface shadow-card;
+  }
+
+  .card-ultra,
+  .card-premium,
+  .card-glass {
+    @apply card;
+  }
+
+  .list-group {
+    @apply overflow-hidden rounded-apple-lg border border-border bg-surface shadow-card;
+  }
+
+  .list-row {
+    @apply border-b border-border bg-surface last:border-b-0;
+  }
+
+  .btn-primary {
+    @apply inline-flex w-full items-center justify-center gap-2 rounded-apple bg-brand px-6 py-3 font-body text-[17px] font-medium text-white transition-colors duration-150 active:bg-brand-dim;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    @apply bg-brand-bright;
+  }
+
+  .btn-primary:disabled {
+    @apply pointer-events-none opacity-40;
+  }
+
+  .btn-secondary {
+    @apply inline-flex w-full items-center justify-center gap-2 rounded-apple border border-border-strong bg-surface px-6 py-3 font-body text-[17px] font-medium text-brand transition-colors duration-150 hover:bg-surface-secondary active:bg-bg-subtle;
+  }
+
+  .input-premium {
+    @apply w-full resize-none rounded-apple border border-border bg-surface px-4 py-3 font-body text-[17px] leading-relaxed text-text placeholder:text-muted transition-colors focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/20;
+  }
+
+  .nav-pill-active {
+    @apply font-medium text-brand;
+  }
+
+  .page-enter {
+    animation: pageEnter 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .task-row-active:hover {
+    @apply bg-surface-secondary/80;
+  }
+
+  .task-row-done {
+    opacity: 0.72;
+  }
+
+  .task-label-done {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: rgba(174, 174, 178, 0.8);
+  }
+
+  .top3-card {
+    @apply card p-5 font-body text-[15px] font-medium leading-snug text-text;
+  }
+
+  .glass-nav {
+    @apply border-b border-border bg-surface-glass shadow-card backdrop-blur-xl backdrop-saturate-150;
+  }
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
